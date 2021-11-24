@@ -12,10 +12,12 @@ def merge(a, b):
                 break
             else:
                 index += 1
+        else:
+            ans =+ b[i:]
     if isinstance(a, tuple):
         return tuple(ans)
     else:
-        return ans    
+        return ans
 
 
 assert merge([1, 2, 7], [3]) == [1, 2, 3, 7]
