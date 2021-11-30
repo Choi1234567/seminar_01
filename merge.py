@@ -3,22 +3,23 @@ def merge(a, b):
         ans = list(a[:])
     else:
         ans = a.copy()
-
-    index = 0
-    for i in range(0, len(b)):
-        while index < len(a):
-            if b[i] <= a[index]:
-                ans.insert(index + i, b[i])
+    index_a = 0
+    for index_b in range(0, len(b)):
+        while index_a < len(a):
+            if b[index_b] <= a[index_a]:
+                ans.insert(index_a + index_b, b[index_b])
                 break
             else:
-                index += 1
+                index_a += 1
         else:
-            ans =+ b[i:]
+            ans = ans + b[index_b:]
+            break
     if isinstance(a, tuple):
         return tuple(ans)
     else:
         return ans
 
 
-assert merge([1, 2, 7], [3]) == [1, 2, 3, 7]
-assert merge((3, 15), (7, 8)) == (3, 7, 8, 15)
+if __name__ == '__main__':
+    assert merge([1, 2, 7], [3]) == [1, 2, 3, 7]
+    assert merge((3, 15), (7, 8)) == (3, 7, 8, 15)
